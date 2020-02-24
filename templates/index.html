@@ -4,15 +4,19 @@
     </head>
     <body>
     {% block content %}
-        <h1>Subscribe to the Mattermost network notification</h1>
-        <form method="post" novalidate>
-            {{ form.hidden_tag() }}
-            <div>
-                {{ form.fullname.label }}<br>
-                {{ form.fullname(size=32) }}
-            </div>
-            <div>{{ form.submit() }}</div>
-        </form>
+        {% if showForm %}
+            <h1>Subscribe to the Mattermost network notification</h1>
+            <form method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.fullname.label }}<br>
+                    {{ form.fullname(size=32) }}
+                </div>
+                <div>{{ form.submit() }}</div>
+            </form>
+         {% else %}
+             <h1>You are already subscribe</h1>
+        {% endif %}
     {% endblock %}
     </body>
 </html>
