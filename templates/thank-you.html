@@ -1,0 +1,14 @@
+<html lang="en">
+    <head>
+        {% if title %}
+        <title>{{ title }} - Thank you</title>
+        {% else %}
+        <title>Thank you!</title>
+        {% endif %}
+    </head>
+    <body>
+    {% block content %}
+        <h1>Thank you</h1>
+    {% endblock %}
+    </body>
+</html>

@@ -1,6 +1,11 @@
 import socket
 
 
+def get_ip_address() -> object:
+    host_name = socket.gethostname()
+    return socket.gethostbyname(host_name)
+
+
 def is_address_ip(address: str) -> bool:
     try:
         return bool(socket.inet_aton(address))
