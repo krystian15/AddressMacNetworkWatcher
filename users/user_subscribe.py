@@ -2,15 +2,27 @@ import json
 from definitions import DATA_STORAGE_DIR
 
 users_file_path = f'{DATA_STORAGE_DIR}/users.json'
+users_object_name = 'users'
 
 
-def add_new_user(fullname, address_mac):
+def write_json_file(data, file_path: str):
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
-    with open(users_file_path) as json_file:
-        data = json.load(json_file)
-        temp = data['users']
 
-        temp.append({
-            "name": fullname,
-            "mac": address_mac
-        })
+def add_new_user(fullname: str, address_mac):
+    with open(users_file_path) as user_file:
+        users = json.load(user_file)
+        users[users_object_name]['address_mac'] = {
+            'name': fullname,
+            'mattermost': None
+        }
+
+        write_json_file(users, users_file_path)
+
+
+def is_user_exist(address_mac: str) -> bool:
+    with open(users_file_path) as user_file:
+        users = json.load(user_file)[users_object_name]
+
+        return not bool(users.get(address_mac))

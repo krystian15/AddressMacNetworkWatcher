@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template, redirect, flash
-from getmac import get_mac_address
+from getmac import get_mac_address, getmac
 import json
 import os
 from mac_addresses.arp import ARPGenerator
 from mac_addresses.addresses_helpers import get_ip_address
 from forms.mac_form import MacForm
-from users.user_subscribe import add_new_user
+from users.user_subscribe import add_new_user, is_user_exist
 
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
@@ -13,25 +13,20 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 arp_output = ARPGenerator().arp_output
 
-# with open('data_storage/users.json.sample') as f:
-#     users: object = json.load(f)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = MacForm()
-    if form.validate_on_submit():
+    address_mac = get_mac_address(ip=request.remote_addr)
 
+    if form.validate_on_submit():
         fullname = form.fullname.data
-        address_mac = get_mac_address(ip=request.remote_addr)
 
         add_new_user(fullname, address_mac)
-
         return redirect('/thank-you')
-    return render_template('index.html', form=form)
 
-    #
-    # return users.get(address_mac, 'Not found')
+    showForm = is_user_exist(address_mac)
+    return render_template('index.html', showForm=showForm, form=form)
 
 
 @app.route('/thank-you')
