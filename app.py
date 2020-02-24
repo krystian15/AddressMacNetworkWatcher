@@ -5,7 +5,6 @@ import json
 from mac_addresses.arp import ARPGenerator
 
 app = Flask(__name__)
-
 arp_output = ARPGenerator().os_arp_output
 
 with open('users.json') as f:
