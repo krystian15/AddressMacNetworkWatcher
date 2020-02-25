@@ -19,14 +19,13 @@ def home():
     address_mac = get_mac_address(ip=request.remote_addr)
 
     if form.validate_on_submit():
-        fullname = form.fullname.data
-        mattermost_nickname = form.mattermost_nickname.data
+        email = form.email.data
 
-        add_new_user(fullname, address_mac, mattermost_nickname)
+        add_new_user(email, address_mac)
         return redirect('/thank-you')
 
-    showForm = is_user_exist(address_mac)
-    return render_template('index.html', showForm=showForm, form=form)
+    hideForm = is_user_exist(address_mac)
+    return render_template('index.html', hideForm=hideForm, form=form)
 
 
 @app.route('/thank-you')

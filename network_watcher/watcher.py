@@ -21,15 +21,17 @@ class NetworkWatcher:
         if is_new_day(self.today_timestamp):
             print('New day')
 
-        hosts = ARPGenerator().addresses
-        online_hosts = list(map(lambda x: x['mac'], hosts))
+        online_hosts = ARPGenerator().addresses
 
         print(online_hosts)
 
     def new_day_update(self):
         pass
 
-    def is_new_day(self):
+    def new_online_users_update(self):
+        pass
+
+    def new_offline_users_update(self):
         pass
 
 

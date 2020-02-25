@@ -4,17 +4,13 @@
     </head>
     <body>
     {% block content %}
-        {% if showForm %}
+        {% if hideForm %}
             <h1>Subscribe to the Mattermost network notification</h1>
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <div>
-                    {{ form.fullname.label }}<br>
-                    {{ form.fullname(size=32) }}
-                </div>
-                <div>
-                    {{ form.mattermost_nickname.label }}<br>
-                    {{ form.mattermost_nickname(size=32) }}
+                    {{ form.email.label }}<br>
+                    {{ form.email(size=32) }}
                 </div>
                 <div>{{ form.submit() }}</div>
             </form>
