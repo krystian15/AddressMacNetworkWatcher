@@ -6,7 +6,7 @@ from mac_addresses.os_helpers import get_parsed_os_cmd_output
 from definitions import ARP_INTERFACE
 
 
-class ARPGenerator:
+class AddressMacGenerator:
     arp_output: str
     arp_pattern: str
     addresses: List
@@ -27,5 +27,5 @@ class ARPGenerator:
 
 
 if __name__ == '__main__':
-    arp = ARPGenerator()
+    arp = AddressMacGenerator()
     print(arp.addresses)

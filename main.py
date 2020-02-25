@@ -1,22 +1,22 @@
 from flask import Flask, request, render_template, redirect
 from getmac import get_mac_address
 import os
-from mac_addresses.arp import ARPGenerator
 from mac_addresses.addresses_helpers import get_ip_address
-from forms.mac_form import MacForm
+from forms.mac_form import EmailForm
 from users.user_subscribe import add_new_user, is_user_exist
 
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-arp_output = ARPGenerator().arp_output
-
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    form = MacForm()
-    address_mac = get_mac_address(ip=request.remote_addr)
+    form = EmailForm()
+    print(request.remote_addr)
+    address_mac = get_mac_address(interface='eth0', ip=request.remote_addr)
+
+    print(address_mac)
 
     if form.validate_on_submit():
         email = form.email.data

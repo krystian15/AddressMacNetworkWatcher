@@ -1,7 +1,8 @@
 import threading
 from definitions import NETWORK_TIMER_INTERVAL
-from mac_addresses.arp import ARPGenerator
+from mac_addresses.address_mac_generator import AddressMacGenerator
 from network_watcher.date_helper import is_new_day, get_current_date_timestamp
+from network_watcher.hosts_helper import get_new_offline_users, get_new_online_users
 
 
 class NetworkWatcher:
@@ -16,14 +17,15 @@ class NetworkWatcher:
     def watch_network_hosts(self):
         threading.Timer(NETWORK_TIMER_INTERVAL, self.watch_network_hosts).start()
 
-        print(self.today_timestamp)
-
         if is_new_day(self.today_timestamp):
             print('New day')
 
-        online_hosts = ARPGenerator().addresses
+        online_hosts = AddressMacGenerator().addresses
 
-        print(online_hosts)
+        print(f'Online {get_new_online_users(self.online_hosts, online_hosts)}')
+        print(f'Offline {get_new_offline_users(online_hosts, self.online_hosts)}')
+
+        self.online_hosts = online_hosts
 
     def new_day_update(self):
         pass

@@ -3,6 +3,6 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class MacForm(FlaskForm):
+class EmailForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     submit = SubmitField('Send')
