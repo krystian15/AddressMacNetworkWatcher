@@ -10,12 +10,13 @@ def write_json_file(data, file_path: str):
         json.dump(data, file, indent=4)
 
 
-def add_new_user(fullname: str, address_mac):
+def add_new_user(fullname: str, address_mac: str, mattermost_nickname: str):
     with open(users_file_path) as user_file:
         users = json.load(user_file)
-        users[users_object_name]['address_mac'] = {
+
+        users[users_object_name][address_mac] = {
             'name': fullname,
-            'mattermost': None
+            'mattermost_nickname': mattermost_nickname
         }
 
         write_json_file(users, users_file_path)
