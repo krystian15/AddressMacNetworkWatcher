@@ -12,6 +12,10 @@
                     {{ form.fullname.label }}<br>
                     {{ form.fullname(size=32) }}
                 </div>
+                <div>
+                    {{ form.mattermost_nickname.label }}<br>
+                    {{ form.mattermost_nickname(size=32) }}
+                </div>
                 <div>{{ form.submit() }}</div>
             </form>
          {% else %}

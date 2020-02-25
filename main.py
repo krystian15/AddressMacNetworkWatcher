@@ -1,6 +1,5 @@
-from flask import Flask, request, render_template, redirect, flash
-from getmac import get_mac_address, getmac
-import json
+from flask import Flask, request, render_template, redirect
+from getmac import get_mac_address
 import os
 from mac_addresses.arp import ARPGenerator
 from mac_addresses.addresses_helpers import get_ip_address
@@ -21,8 +20,9 @@ def home():
 
     if form.validate_on_submit():
         fullname = form.fullname.data
+        mattermost_nickname = form.mattermost_nickname.data
 
-        add_new_user(fullname, address_mac)
+        add_new_user(fullname, address_mac, mattermost_nickname)
         return redirect('/thank-you')
 
     showForm = is_user_exist(address_mac)
