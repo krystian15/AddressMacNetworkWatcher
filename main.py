@@ -1,12 +1,11 @@
 from flask import Flask, request, render_template, redirect
 from getmac import get_mac_address
-import os
 from mac_addresses.addresses_helpers import get_ip_address
 from forms.mac_form import EmailForm
 from users.user_subscribe import add_new_user, is_user_exist
+from definitions import SECRET_KEY
 
 app = Flask(__name__)
-SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 
