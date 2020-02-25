@@ -9,4 +9,4 @@ def get_current_date_timestamp() -> int:
 
 
 def is_new_day(prev_timestamp: int) -> bool:
-    return  bool(get_current_date_timestamp() != prev_timestamp)
+    return bool(get_current_date_timestamp() != prev_timestamp)
