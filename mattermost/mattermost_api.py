@@ -17,11 +17,16 @@ class MattermostRESTAPI:
             "channel_id": self.chanel_id,
             "message": message
         }
-        requests.post(f'{API_URL}/posts', json=payload, headers=self.headers)
+        return requests.post(f'{API_URL}/posts', json=payload, headers=self.headers)
+
+    def delete_message(self, message_id):
+        return requests.delete(f'{API_URL}/posts/{message_id}', headers=self.headers)
 
     def clear_channel(self):
         pass
 
 
 if __name__ == "__main__":
-    MattermostRESTAPI()
+    res = MattermostRESTAPI().send_message('test')
+    # print(res.text)
+    # print(MattermostRESTAPI().delete_message().text)

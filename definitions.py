@@ -5,8 +5,8 @@ SECRET_KEY: bytes = os.urandom(32)
 ROOT_DIR: Union[bytes, str] = os.path.dirname(os.path.abspath(__file__))
 DATA_STORAGE_DIR: Union[bytes, str] = os.path.join(ROOT_DIR, 'data_storage')
 
-ARP_INTERFACES: Tuple[str, str, str] = ('wlan0', 'eth0', 'en1')
-ARP_INTERFACE: str = ARP_INTERFACES[2]
+ARP_INTERFACES: Tuple[str, str, str, str] = ('wlan0', 'eth0', 'en1', 'enp0s3')
+ARP_INTERFACE: str = ARP_INTERFACES[3]
 
 
 NETWORK_TIMER_INTERVAL: int = 20
