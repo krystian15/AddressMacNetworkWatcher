@@ -9,6 +9,7 @@ options but be sure to understand what you're doing before you do it:
 
 	`user host = (root) NOPASSWD: /usr/bin/arp-scan`
 * Check `arp-scan` bin location:
+
    `which arp-scan`
 
 * Set the SUID bit on the `arp-scan` bin:
