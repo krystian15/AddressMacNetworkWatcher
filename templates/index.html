@@ -4,7 +4,7 @@
     </head>
     <body>
     {% block content %}
-        {% if hideForm %}
+        {% if hide_form %}
             <h1>Subscribe to the Mattermost network notification</h1>
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
