@@ -26,9 +26,12 @@ def add_new_user(email: str, address_mac: str):
 
 def is_user_exist(address_mac: str) -> bool:
     with open(WHITE_LIST_DIR) as user_file:
-        users = json.load(user_file)[WHITE_LIST_NAME]
+        white_list_hosts = json.load(user_file)[WHITE_LIST_NAME]
+
+        print(white_list_hosts)
 
         try:
-            return bool(users[address_mac])
+            # print(p)
+            return bool(white_list_hosts[address_mac])
         except KeyError:
             return True

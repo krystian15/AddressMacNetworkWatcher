@@ -15,7 +15,7 @@ ARP_INTERFACES: Tuple[str, str, str, str] = ('wlan0', 'eth0', 'en1', 'enp0s3')
 ARP_INTERFACE: str = ARP_INTERFACES[2]
 
 
-NETWORK_TIMER_INTERVAL: int = 20
+NETWORK_TIMER_INTERVAL: int = 100
 
 API_URL: str = 'https://mattermost.ageno.work/api/v4'
 BOT_TOKEN: str = 'x9quyx7ezpnc7mxobhphkm9n3y'
