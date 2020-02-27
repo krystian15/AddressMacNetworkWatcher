@@ -23,7 +23,6 @@ class NetworkWatcher:
             print('New day')
 
         online_hosts = AddressMacGenerator().addresses
-
         new_online_hosts = get_new_online_users(self.online_hosts, online_hosts)
         new_offline_users = get_new_offline_users(online_hosts, self.online_hosts)
 
