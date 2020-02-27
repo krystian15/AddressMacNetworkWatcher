@@ -27,11 +27,10 @@ def add_new_user(email: str, address_mac: str):
 def is_user_exist(address_mac: str) -> bool:
     with open(WHITE_LIST_DIR) as user_file:
         white_list_hosts = json.load(user_file)[WHITE_LIST_NAME]
+        if white_list_hosts:
+            for email, devices in white_list_hosts.items():
+                return any(elem == address_mac for elem in devices)
+        return False
 
-        print(white_list_hosts)
 
-        try:
-            # print(p)
-            return bool(white_list_hosts[address_mac])
-        except KeyError:
-            return True
+

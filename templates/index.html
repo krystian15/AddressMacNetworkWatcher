@@ -6,7 +6,7 @@
     <body>
     {% block content %}
         <div class="form-wrapper">
-            {% if hide_form %}
+            {% if show_form %}
                 <h1 class="page-title">Subscribe to the Mattermost network notification</h1>
                 <form method="post" novalidate>
                     {{ form.hidden_tag() }}

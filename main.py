@@ -20,8 +20,8 @@ def home():
         add_new_user(email, address_mac)
         return redirect('/thank-you')
 
-    hide_form = is_user_exist(address_mac)
-    return render_template('index.html', hide_form=hide_form, form=form)
+    show_form = not is_user_exist(address_mac)
+    return render_template('index.html', show_form=show_form, form=form)
 
 
 @app.route('/thank-you')
