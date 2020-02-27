@@ -22,11 +22,15 @@ class MattermostRESTAPI:
     def delete_message(self, message_id):
         return requests.delete(f'{API_URL}/posts/{message_id}', headers=self.headers)
 
+    # def edit_message(self, message_id):
+    #     return requests.put(f'{API_URL}/posts/{message_id}',
+    #                         json={'id': '3pqnosa19j8oir5dfyeomcz39w', 'message': 'Update'},
+    #                         headers=self.headers)
+
     def clear_channel(self):
         pass
 
 
 if __name__ == "__main__":
     res = MattermostRESTAPI().send_message('test')
-    # print(res.text)
-    # print(MattermostRESTAPI().delete_message().text)
+    print(res.text)
