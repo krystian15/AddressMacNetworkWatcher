@@ -19,15 +19,16 @@ class MattermostRESTAPI:
         }
         return requests.post(f'{API_URL}/posts', json=payload, headers=self.headers)
 
-    # def edit_message(self, message_id):
-    #     return requests.put(f'{API_URL}/posts/{message_id}',
-    #                         json={'id': '3pqnosa19j8oir5dfyeomcz39w', 'message': 'Update'},
-    #                         headers=self.headers)
+    def edit_message(self, message_id):
+        return requests.put(f'{API_URL}/posts/{message_id}',
+                            json={'id': 'a5kdyxqut3f5tnp8sbfqngttfy', 'message': 'Update'},
+                            headers=self.headers)
 
     def clear_channel(self):
         pass
 
 
 if __name__ == "__main__":
-    res = MattermostRESTAPI().send_message('test')
+    # res = MattermostRESTAPI().send_message('test')
+    res = MattermostRESTAPI().edit_message('a5kdyxqut3f5tnp8sbfqngttfy')
     print(res.text)
