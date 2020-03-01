@@ -19,9 +19,6 @@ class MattermostRESTAPI:
         }
         return requests.post(f'{API_URL}/posts', json=payload, headers=self.headers)
 
-    def delete_message(self, message_id):
-        return requests.delete(f'{API_URL}/posts/{message_id}', headers=self.headers)
-
     # def edit_message(self, message_id):
     #     return requests.put(f'{API_URL}/posts/{message_id}',
     #                         json={'id': '3pqnosa19j8oir5dfyeomcz39w', 'message': 'Update'},

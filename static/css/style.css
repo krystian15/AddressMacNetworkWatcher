@@ -1,7 +1,34 @@
+:root {
+    --footer-height: 40px;
+
+    --primary-color: #fff;
+    --secondary-color: #fd4040;
+    --third-color: #e8e9eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-family: -system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,Inter,Helvetica,Arial,sans-serif;
 }
-.form-wrapper {
+
+html,
+body {
+   padding: 0;
+   margin: 0;
+   background-color: var(--primary-color);
+   height: calc(100vh - var(--footer-height));
+   text-align: center;
+}
+
+.footer {
+    height: var(--footer-height);
+}
+
+.content {
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,33 +36,43 @@ html {
     height: 100%;
 }
 
-.form-wrapper .page-title {
+.content .page-title {
     margin-bottom: 40px;
     text-align: center;
 }
 
-.form-wrapper form {
+.content form {
     display: flex;
 }
 
-.form-wrapper input[type="text"],
-.form-wrapper input[type="submit"] {
+.content input[type="text"],
+.content input[type="submit"] {
     border: none;
     font-size: 14px;
     padding: 16px;
     line-height: 1.2;
 }
 
-.form-wrapper input[type="text"] {
+.content input[type="text"] {
     border: none;
-    background: #e8e9eb;
+    background: var(--third-color);
     width: 100%;
 }
 
-.form-wrapper input[type="submit"] {
+.content input[type="submit"] {
     padding: 16px 32px;
-    background: #fd4040;
+    background: var(--secondary-color);
     color: white;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+div.error {
+    margin-top: 20px;
+    color: red;
 }

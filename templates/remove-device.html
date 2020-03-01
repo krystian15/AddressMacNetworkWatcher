@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block title %}Mattermost network notification{% endblock %}
 {% block content %}
-    {% if show_form %}
-        <h1 class="page-title">Subscribe to the Mattermost network notification</h1>
+    <h1 class="page-title"><mark>Un</mark>subscribe current device</h1>
         <form method="post" novalidate>
             {{ form.hidden_tag() }}
             <label>
@@ -10,12 +9,7 @@
             </label>
             <div>{{ form.submit() }}</div>
         </form>
-    {% else %}
-        <h1 class="page-title">
-            You are already subscribe!
-        </h1>
-        <div>
-            If you want to unsubscribe this device click <a href="/remove-device">Here</a>
-        </div>
+    {% if error %}
+         <div class="error">{{ error }}</div>
     {% endif %}
 {% endblock %}

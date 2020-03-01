@@ -24,21 +24,20 @@ def add_new_user(email: str, address_mac: str):
         write_json_file(white_list_hosts_file, WHITE_LIST_DIR)
 
 
-# def remove_user_devises(email: str, address_mac: str, remove_one_device: bool = True):
-#     email: str
-#     address_mac: str
-#
-#     with open(WHITE_LIST_DIR) as user_file:
-#         users = json.load(user_file)
-#         ref = users[WHITE_LIST_NAME]
-#
-#         if email not in ref.keys():
-#             ref[email] = []
-#
-#         if address_mac not in ref[email]:
-#             ref[email].append(address_mac)
-#
-#         write_json_file(users, WHITE_LIST_DIR)
+def remove_user_devise(email: str, address_mac: str):
+    email: str
+    address_mac: str
+
+    with open(WHITE_LIST_DIR) as user_file:
+        users = json.load(user_file)
+        ref = users[WHITE_LIST_NAME]
+
+        if email not in ref.keys() or address_mac not in ref[email]:
+            return "This device is assigned to another user, check address email."
+        else:
+            ref[email].remove(address_mac)
+            write_json_file(users, WHITE_LIST_DIR)
+        return True
 
 
 def is_user_exist(address_mac: str) -> bool:
