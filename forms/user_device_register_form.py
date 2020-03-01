@@ -3,6 +3,6 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class EmailForm(FlaskForm):
+class UserDeviceRegisterForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()], render_kw={"placeholder": "Email"})
     submit = SubmitField('Send')

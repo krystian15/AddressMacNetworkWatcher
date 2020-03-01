@@ -1,13 +1,5 @@
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <title>Thank you!</title>
-    </head>
-    <body>
-        <div class="form-wrapper">
-            {% block content %}
-                <h1 class="page-title">Thank you ❤️!</h1>
-            {% endblock %}
-        </div>
-    </body>
-</html>
+{% extends "layout.html" %}
+{% block title %}Thank you!{% endblock %}
+{% block content %}
+    <h1 class="page-title">Thank you ❤️!</h1>
+{% endblock %}
